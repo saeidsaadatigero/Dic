@@ -1,4 +1,4 @@
-# :musical_note:Development of a Python program to record audio, translate text from Farsi to English and convert text to speech in Farsi and English languages.
+## :musical_note:Development of a Python program to record audio, translate text from Farsi to English and convert text to speech in Farsi and English languages.
 This code is a Python script designed to create a voice-based translation application that uses speech recognition, translation, and text-to-speech functionalities. Here’s a detailed breakdown of its components and functionality:
 
 ## :star::star::star::star::star:Breakdown of the Code
