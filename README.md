@@ -1,39 +1,39 @@
-## :musical_note:Development of a Python program to record audio, translate text from Farsi to English and convert text to speech in Farsi and English languages.
-This code is a Python script designed to create a voice-based translation application that uses speech recognition, translation, and text-to-speech functionalities. Here’s a detailed breakdown of its components and functionality:
+This Python code implements a simple voice recognition and translation system. Here’s a breakdown of what each part of the code does:
 
-## :star::star::star::star::star:Breakdown of the Code
+### :star::star::star::star::star:1. **Voice Recognition**
+- **Library Used**: `speech_recognition`
+- **Function**: `voice_to_text()`
+  - This function listens for audio input from the microphone.
+  - It uses Google’s speech recognition service to convert the spoken audio (in Persian) into text.
+  - If successful, it returns the recognized text; if it fails to understand the audio or if there's a request error, it handles those exceptions by printing error messages.
 
-1. **Library Installation**:
-   - The script installs necessary libraries such as `SpeechRecognition`, `googletrans`, `gTTS` (Google Text-to-Speech), and `PyAudio` using pip commands.
+### 2. **Translation**
+- **Library Used**: `googletrans`
+- **Function**: `translate_text(text, dest_language='en')`
+  - This function takes a string of text and translates it into the specified destination language (default is English).
+  - It uses the Google Translate API to perform the translation and returns the translated text.
 
-2. **Importing Modules**:
-   - Imports various libraries for audio processing, speech recognition, translation, and text-to-speech conversion.
+### 3. **Text-to-Speech**
+- **Library Used**: `gtts` (Google Text-to-Speech)
+- **Function**: `text_to_speech(text)`
+  - This function converts the provided text into speech.
+  - It saves the audio as an MP3 file and plays it using the default media player on the system (the command is specific to Windows).
 
-3. **Model Loading**:
-   - Loads a pre-trained translation model (`facebook/mbart-large-50-many-to-many-mmt`) and its tokenizer from the Hugging Face Transformers library. This model is capable of translating between multiple languages.
+### 4. **Reading Words Separately**
+- **Function**: `read_words(text)`
+  - This function splits the translated text into individual words and uses the `text_to_speech` function to read each word aloud one by one.
 
-4. **Speech Recognition**:
-   - **`speech_to_text()`**: This function listens for audio input from the microphone, recognizes the speech using Google's speech recognition service, and returns the recognized text. It handles errors if the speech is not understood or if there’s a request error.
+### 5. **Combining All Steps**
+- **Function**: `main()`
+  - This function orchestrates the entire process:
+    1. It calls `voice_to_text()` to get the user's spoken input.
+    2. It prints the recognized text.
+    3. It translates the recognized text into English using `translate_text()`.
+    4. It prints the translated text.
+    5. It converts the translated text to speech and reads each word separately.
 
-5. **Translation Functionality**:
-   - **`translate_text(text, src_lang, dest_lang)`**: This function translates the input text from the source language to the destination language using the loaded translation model. 
-     - If the source language is Persian (`fa`), it sets the source language to Persian and translates to English (`en`).
-     - If the source language is English, it translates to Persian.
-     - The translated text is printed and returned.
-
-6. **Text-to-Speech**:
-   - **`text_to_speech(text)`**: Converts the given text into speech using gTTS and plays it back. It saves the audio to a temporary file (`output.mp3`), plays it, and then deletes the file.
-   - The function checks the language and processes the text accordingly for either English or Persian.
-
-7. **Main Functionality**:
-   - **`main()`**: This function orchestrates the overall flow:
-     - It calls `speech_to_text()` to get user input.
-     - If recognized, it translates the input text from Persian to English.
-     - It then uses `text_to_speech()` to read the translated text aloud in English.
-     - Additionally, it splits the original user input into words and reads each word aloud in Persian.
-
-8. **Execution**:
-   - The script runs the `main()` function when executed directly.
+### 6. **Execution**
+- The `if __name__ == "__main__":` block ensures that `main()` is called when the script is run directly.
 
 ### Summary
-In summary, this code creates a voice-activated translation application that listens to user speech in Persian, translates it to English, and then speaks the translated text. It also reads each word of the original input in Persian. The application leverages speech recognition, machine translation, and text-to-speech technologies to provide an interactive translation experience.
+In summary, this code captures spoken input in Persian, translates it to English, and then converts the translated text back into speech, allowing for a seamless interaction between voice and text in different languages.
