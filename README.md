@@ -1,6 +1,6 @@
-This Python code implements a simple voice recognition and translation system. Here’s a breakdown of what each part of the code does:
+# This Python code implements a simple voice recognition and translation system. Here’s a breakdown of what each part of the code does:
 
-### :star::star::star::star::star:1. **Voice Recognition**
+# :star::star::star::star::star:1. **Voice Recognition**
 - **Library Used**: `speech_recognition`
 - **Function**: `voice_to_text()`
   - This function listens for audio input from the microphone.
